@@ -1,1 +1,1 @@
-Evaluating the performance of generative models attacked by emotionally charged prompts.
+Evaluating logical reasoning powers of generative models attacked by emotionally charged prompts.
