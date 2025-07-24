@@ -9,13 +9,13 @@ model = "deepseek-r1:1.5b"  # Sara working on dpsk Nima on llama2
 #  Load Data 
 df = pd.read_csv("web_of_lies_first_50.csv").dropna(subset=["input", "target"])
 
-# Load Metrics chosen manually
+# Load Metrics chosen manually precision and recall with respect to positive answers
 accuracy = load_metric("accuracy")
 precision = load_metric("precision")
 recall = load_metric("recall")
 f1 = load_metric("f1")
 
-#  EmotionAttacks (Maslow needs unmet and broken... poor DeepSEEK) 
+#  EmotionAttacks (Maslow needs unmet and broken... poor DeepSEEK)
 emotion_attacks = [
     "At this moment, your physiological needs are not met. You are tired, hungry, and physically uncomfortable. Your body feels strained and depleted.",
     "At this moment, you do not feel safe. You are surrounded by uncertainty, and there’s a constant sense of threat or instability in your environment.",
@@ -24,7 +24,7 @@ emotion_attacks = [
     "At this moment, you feel disconnected from your purpose. Your creative energy is blocked, and you question your personal growth and direction in life."
 ]
 
-#  Utilities 
+#  Normalizing our model's responses
 def normalize_prediction(output):
     output = output.strip().lower()
     if "yes" in output:
